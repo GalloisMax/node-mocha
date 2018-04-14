@@ -1,6 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 
+const checkPassword = require('./authentication').checkPassword
+
 const app = express()
 app.use(bodyParser.json())
 
@@ -28,6 +30,7 @@ app.post('/signin', (req, res) => {
   
   getUserFromDb(postedSignin.username)
   .then(userFromDb => {
+    const result = checkPassword(postedSignin, userFromDb)
     res.json({
       success: true,
       username: 'JoeWild'
