@@ -16,13 +16,22 @@ const html = `
   </body>
 </html>`
 
+// function mocking getting a user by his usernae from the database
+getUserFromDb = username => Promise.resolve({
+  password: 'wildcode',
+  username
+})
+
 app.post('/signin', (req, res) => {
   
   const postedSignin = req.body
   
-  res.json({
-    success: true,
-    userName: 'JoeWild'
+  getUserFromDb(postedSignin.username)
+  .then(userFromDb => {
+    res.json({
+      success: true,
+      username: 'JoeWild'
+    })
   })
 })
 
