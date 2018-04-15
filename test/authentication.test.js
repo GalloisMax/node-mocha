@@ -29,4 +29,11 @@ describe('authentication module', () => {
             success: true
         })
     })
+
+    it('checkpassword should username and success false if password is invalid', () => {
+        assert.deepEqual(checkpassword(validSigninData, existingUser), {
+            username: validSigninData.username,
+            success: false
+        })
+    })
 })
