@@ -26,6 +26,11 @@ describe('authentication module', () => {
       username: 'John'
     }
 
+    const errorResponse = {
+      success: false,
+      username: 'John'
+    }
+
     it('should return an object', () => {
       const result = checkPassword(validCredentials, existingUser)
       assert.typeOf(result, 'object')
@@ -34,6 +39,11 @@ describe('authentication module', () => {
     it('should return success reponse if credentials password match user password', () => {
       const result = checkPassword(validCredentials, existingUser)
       assert.deepEqual(result, successResponse)
+    })
+
+    it('should return error reponse if credentials password does not match user password', () => {
+      const result = checkPassword(inValidCredentials, existingUser)
+      assert.deepEqual(result, errorResponse)
     })
 
   })

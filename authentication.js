@@ -1,6 +1,6 @@
 module.exports = {
   checkPassword: (credentials, user) => ({
-    success: true,
+    success: credentials.password === user.password,
     username: user.username
   })
 }

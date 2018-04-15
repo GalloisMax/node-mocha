@@ -32,12 +32,9 @@ app.post('/signin', (req, res) => {
   .then(userFromDb => {
     
     //check credentials.password vs userFromDb.password
-    const reponse = checkPassword(credentials, userFromDb)
-    // const reponse = { 
-    //   success: true, 
-    //   username: 'JoeWild' 
+    const response = checkPassword(credentials, userFromDb)
     
-    res.json(reponse) 
+    res.json(response) 
   })
 
 }) 
