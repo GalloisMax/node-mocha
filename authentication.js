@@ -1,3 +1,3 @@
 module.exports = {
-    checkPassword: (signinData, userFromDb) => ""
+    checkPassword: (signinData, userFromDb) => ({})
 }
