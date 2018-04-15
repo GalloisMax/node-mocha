@@ -1,3 +1,6 @@
 module.exports = {
-    checkPassword: (signinData, userFromDb) => ({})
+    checkPassword: (signinData, userFromDb) => ({
+        username: signinData.username,
+        success: true
+    })
 }
