@@ -17,7 +17,7 @@ Focus on the command lines. You will learn how to install mocha and how to use i
 
 Create your own project and watch the video a second time, this time reproduce every step, at the end add your own function to the project and write a test.
 
- 2. Follow this live coding. I show you a way to add test in your code for backend (server.js)
+ 2. Follow this live coding [part 1](https://youtu.be/JF_t7P3UAso)[part 2](https://youtu.be/LbdeVTmHQgw). I show you a way to add test in your code for backend (server.js)
 
  3. With your project team identify a feature on server.js that you want to test. Checkout on a branch test, install mocha, isolate the feature in a module, write appropriate tests.
 
