@@ -11,7 +11,7 @@ describe('authentication module', () => {
 
     const inValidSigninData = {
         username: 'John',
-        password: '1234'
+        password: '4321'
     }
 
     const existingUser = {
@@ -25,14 +25,14 @@ describe('authentication module', () => {
 
     it('checkpassword should username and success true if password is valid', () => {
         assert.deepEqual(checkpassword(validSigninData, existingUser), {
-            username: validSigninData.username,
+            username: existingUser.username,
             success: true
         })
     })
 
     it('checkpassword should username and success false if password is invalid', () => {
-        assert.deepEqual(checkpassword(validSigninData, existingUser), {
-            username: validSigninData.username,
+        assert.deepEqual(checkpassword(inValidSigninData, existingUser), {
+            username: existingUser.username,
             success: false
         })
     })

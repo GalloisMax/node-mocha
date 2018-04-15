@@ -31,10 +31,7 @@ app.post('/signin', (req, res) => {
   getUserFromDb(postedSignin.username)
   .then(userFromDb => {
     const result = checkPassword(postedSignin, userFromDb)
-    res.json({
-      success: true,
-      username: 'JoeWild'
-    })
+    res.json(result)
   })
 })
 
