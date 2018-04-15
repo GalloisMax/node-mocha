@@ -22,4 +22,11 @@ describe('authentication module', () => {
     it('checkpassword should return an object', () => {
         assert.typeOf(checkpassword(validSigninData, existingUser), 'object')
     })
+
+    it('checkpassword should username and success true if password is valid', () => {
+        assert.deepEqual(checkpassword(validSigninData, existingUser), {
+            username: validSigninData.username,
+            success: true
+        })
+    })
 })
