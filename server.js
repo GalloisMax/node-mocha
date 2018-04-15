@@ -4,6 +4,12 @@ const bodyParser = require('body-parser')
 const app = express()
 app.use(bodyParser.json()) 
 
+// function mocking getting a user by his username from the database 
+getUserFromDb = username => Promise.resolve({ 
+  password: 'wildcode', 
+  username
+})
+
 const html = `
 <!doctype html>
 <html class="no-js" lang="">
@@ -21,10 +27,19 @@ app.post('/signin', (req, res) => {
    
   const credentials = req.body 
   
-  res.json({ 
-    success: true, 
-    userName: 'JoeWild' 
-  }) 
+  getUserFromDb(credentials.username)
+  .then(userFromDb => {
+    
+    //check credentials.password vs userFromDb.password
+
+    const reponse = { 
+      success: true, 
+      userName: 'JoeWild' 
+    }
+  
+    res.json(reponse) 
+  })
+
 }) 
 
 app.get('*', (req, res) => {
