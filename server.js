@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser') 
+const checkPassword = require('./authentication').checkPassword
 
 const app = express()
 app.use(bodyParser.json()) 
@@ -31,12 +32,8 @@ app.post('/signin', (req, res) => {
   .then(userFromDb => {
     
     //check credentials.password vs userFromDb.password
-
-    const reponse = { 
-      success: true, 
-      userName: 'JoeWild' 
-    }
-  
+    const reponse = checkPassword(credentials, userFromDb)
+    
     res.json(reponse) 
   })
 
