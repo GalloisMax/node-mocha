@@ -33,6 +33,9 @@ app.post('/signin', (req, res) => {
     
     //check credentials.password vs userFromDb.password
     const reponse = checkPassword(credentials, userFromDb)
+    // const reponse = { 
+    //   success: true, 
+    //   userName: 'JoeWild' 
     
     res.json(reponse) 
   })
