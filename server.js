@@ -35,7 +35,7 @@ app.post('/signin', (req, res) => {
     const reponse = checkPassword(credentials, userFromDb)
     // const reponse = { 
     //   success: true, 
-    //   userName: 'JoeWild' 
+    //   username: 'JoeWild' 
     
     res.json(reponse) 
   })
