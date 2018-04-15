@@ -1,10 +1,15 @@
 const express = require('express')
-const bodyParser = require('body-parser')
-
+const bodyParser = require('body-parser') 
 const checkPassword = require('./authentication').checkPassword
 
 const app = express()
-app.use(bodyParser.json())
+app.use(bodyParser.json()) 
+
+// function mocking getting a user by his username from the database 
+getUserFromDb = username => Promise.resolve({ 
+  password: 'wildcode', 
+  username
+})
 
 const html = `
 <!doctype html>
@@ -14,31 +19,29 @@ const html = `
     <title>Mocha - test</title>
   </head>
   <body>
-    <h1>You are not connected</h1>
+    <h1>Welcome to the world of test</h1>
+    <p>post user credentials (login / password) on the signin route</p>
   </body>
 </html>`
 
-// function mocking getting a user by his usernae from the database
-getUserFromDb = username => Promise.resolve({
-  password: 'wildcode',
-  username
-})
-
-app.post('/signin', (req, res) => {
+app.post('/signin', (req, res) => { 
+   
+  const credentials = req.body 
   
-  const postedSignin = req.body
-  
-  getUserFromDb(postedSignin.username)
+  getUserFromDb(credentials.username)
   .then(userFromDb => {
-    const result = checkPassword(postedSignin, userFromDb)
-    res.json(result)
+    
+    //check credentials.password vs userFromDb.password
+    const response = checkPassword(credentials, userFromDb)
+    
+    res.json(response) 
   })
-})
+
+}) 
 
 app.get('*', (req, res) => {
-    res.send(html)
-    res.end()
-  })
+  res.send(html)
+  res.end()
+})
   
 app.listen(8000)
-  
