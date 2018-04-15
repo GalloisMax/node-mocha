@@ -10,15 +10,16 @@ const html = `
     <title>Mocha - test</title>
   </head>
   <body>
-    <h1>You are not connected</h1>
+    <h1>Welcome to the world of test</h1>
+    <p>post user credentials (login / password) on the signin route</p>
   </body>
 </html>`
 
 
+
 app.get('*', (req, res) => {
-    res.send(html)
-    res.end()
-  })
+  res.send(html)
+  res.end()
+})
   
-  app.listen(8000)
-  
+app.listen(8000)
